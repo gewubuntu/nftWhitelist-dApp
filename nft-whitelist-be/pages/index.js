@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head"
+import styles from "../styles/Home.module.css"
 import {useEffect, useRef, useState} from "react";
 import Web3Modal from "web3modal"
 import {Contract, providers} from "ethers";
@@ -23,9 +23,9 @@ export default function Home() {
    * Return a Provifder or Signer object representing the Ethereum RPC without the
    * signing capabilities of metamask attached
    *
-   * A 'Provider' is needed to interact with the blockchain - reading transactions, reading balances, reading state, etc.
+   * A "Provider" is needed to interact with the blockchain - reading transactions, reading balances, reading state, etc.
    *
-   * A 'Signer' is a special type of Provider used in case a 'write' transaction needs to be done on the blockchain,
+   * A "Signer" is a special type of Provider used in case a "write" transaction needs to be done on the blockchain,
    * which involves the connected account beeing able to sign/authorize the sent transaction. Metamask exposes a Signer API
    * to allow your website to request signatures from the user using Signer functions.
    *
@@ -34,7 +34,7 @@ export default function Home() {
 
   const getProviderOrSigner = async (needSigner = false) => {
     // connect to metamask
-    // since we store 'web3Modal' as a reference, we need to access the 'current' value to get access to the underlying object
+    // since we store "web3Modal" as a reference, we need to access the "current" value to get access to the underlying object
     const provider = await web3ModalRef.current.connect();
     const web3Provider = new providers.Web3Provider(provider);
 
@@ -146,7 +146,7 @@ export default function Home() {
       if (joinedWhitelist) {
         return (
             <div className={styles.description}>
-              Congratulations! You've acquired a slot in my NFT-Whitelist!
+              Congratulations! You have acquired a slot in my NFT-Whitelist!
             </div>
         );
       } else if (loading) {
@@ -169,14 +169,14 @@ export default function Home() {
 
   //useEffects are used to react to changes of the website
   // the array at the end of a function call represents what state changes will trigger this effect
-  // in this case, whenever the value of 'walletConnected' changes - this effect will be called
+  // in this case, whenever the value of "walletConnected" changes - this effect will be called
   useEffect(() => {
     // if wallet is not connected, create a new instance of Web3Modal and connect metamask
     if (!walletConnected) {
-      // assign Web3Modal class to reference object by setting its 'current' value
-      //the 'current' value is persisted throughout as long as page is open
+      // assign Web3Modal class to reference object by setting its "current" value
+      //the "current" value is persisted throughout as long as page is open
       web3ModalRef.current = new Web3Modal({
-        network: 'rinkeby',
+        network: "rinkeby",
         providerOptions: {},
         disableInjectedProvider: false,
       });
@@ -203,7 +203,7 @@ export default function Home() {
             {renderButton()}
           </div>
           <div>
-            <img alt='ooops' className={styles.image} src="./crypto-devs.svg" />
+            <img alt="ooops" className={styles.image} src="./crypto-devs.svg" />
           </div>
         </div>
 
