@@ -38,11 +38,12 @@ export default function Home() {
     const provider = await web3ModalRef.current.connect();
     const web3Provider = new providers.Web3Provider(provider);
 
-    // if user is not connected to rinkeby-net, throw error
+    // if user is not connected to goerli-net, throw error
     const { chainId } = await web3Provider.getNetwork();
-    if (chainId !== 4) {
-      window.alert("Change your Network to Rinkeby");
-      throw new Error("Change your Network to Rinkeby");
+    console.log(chainId)
+    if (chainId !== 5) {
+      window.alert("Change your Network to Goerli");
+      throw new Error("Change your Network to Goerli");
     }
 
     if (needSigner) {
